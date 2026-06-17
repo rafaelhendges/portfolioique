@@ -11,9 +11,6 @@
 
 ---
 
-## 🖼️ Preview do Projeto
-
-> *(Adicione aqui uma imagem ou GIF do site quando quiser)*
 
 ```txt
 📸 Sugestão:
