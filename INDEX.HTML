@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ique | Portfólio de Arte Contemporânea</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0a0c;
+      font-family: 'Inter', sans-serif;
+      color: #e5e1da;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    /* SEÇÃO ARTISTA (Layout Moderno e Limpo) */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .artist-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 2px solid #d4af37;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+      margin-bottom: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .artist-photo:hover {
+      transform: scale(1.05);
+    }
+
+    .artist-name {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .artist-sub {
+      color: #a39e93;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 3rem;
+      letter-spacing: 0.5px;
+    }
+
+    .artist-sub i {
+      color: #d4af37;
+      margin-right: 6px;
+    }
+
+    .bio-card {
+      max-width: 750px;
+      background: #121113;
+      border-radius: 20px;
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+
+    .bio-card p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #cbc6bc;
+    }
+
+    .bio-card p strong {
+      color: #ffffff;
+    }
+
+    .bio-card .quote {
+      font-style: italic;
+      border-left: 2px solid #d4af37;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      color: #e5e1da;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .cv-resumo {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+
+    .cv-resumo strong {
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .cv-resumo ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .cv-resumo li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #b5b0a5;
+      font-size: 0.95rem;
+    }
+
+    .cv-resumo li i {
+      width: 20px;
+      color: #d4af37;
+      margin-top: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* FILTRO POR SÉRIE (Estilo Minimalista) */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .filter-btn {
+      background: #121113;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #a39e93;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-btn i {
+      margin-right: 6px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: #ffffff;
+      color: #0b0a0c;
+      border-color: #ffffff;
+    }
+
+    /* GALERIA HEADER */
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 1rem;
+    }
+
+    .gallery-header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .gallery-header h2 i {
+      color: #d4af37;
+      font-size: 1.3rem;
+    }
+
+    .works-count {
+      background: #121113;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #d4af37;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* GRID DO PORTFÓLIO */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 3rem;
+    }
+
+    /* CARDS DE ARTE (Visual Limpo e Focado na Imagem) */
+    .art-card {
+      background: transparent;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      opacity: 0;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .img-wrapper {
+      width: 100%;
+      background: #121113;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      aspect-ratio: 4 / 5; /* Padroniza a área visual das obras */
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Preenche elegantemente o espaço do container */
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .art-card:hover .img-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .card-info {
+      padding: 1.5rem 0.5rem 0.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .artist-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #d4af37;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .artwork-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .detail-chip {
+      background: #121113;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #b5b0a5;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .dimensions {
+      font-size: 0.8rem;
+      color: #a39e93;
+      margin-top: auto; /* Força ficar na parte inferior do card */
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dimensions i {
+      color: #d4af37;
+    }
+
+    /* RODAPÉ BRUTALISTA-MINIMALISTA */
+    .footer {
+      text-align: center;
+      margin-top: 8rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      color: #706b61;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer a {
+      color: #e5e1da;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer a:hover {
+      color: #d4af37;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+      .hero {
+        margin-bottom: 3rem;
+        padding-bottom: 2.5rem;
+      }
+      .artist-name {
+        font-size: 2.2rem;
+      }
+      .bio-card {
+        padding: 2rem 1.5rem;
+      }
+      .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 2rem;
+      }
+      .footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+        text-align: center;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <img class="artist-photo" src="imagens/obras/imagem 0.jpg" alt="Ique - Artista Visual">
+    <h1 class="artist-name">Ique</h1>
+    <div class="artist-sub"><i class="fas fa-paint-brush"></i> Artista visual | Goiânia · Pintura acrílica e desenho</div>
+    
+    <div class="bio-card">
+      <p><strong>Trajetória</strong><br>
+      Ique nasceu, cresceu e vive em Goiânia. Autodidata, desde cedo copiava os exercícios de arquitetura das irmãs. Sempre pintou e desenhou sem técnica formal até iniciar, há 8 anos, uma jornada para aprofundar-se na pintura acrílica. Encontrou no <strong>Centro Livre de Artes</strong> (escola da prefeitura de Goiânia) a formação que buscava e resgatou da infância a pintura acrílica seca, mesclando traços de desenho e pintura.</p>
+      
+      <div class="quote">
+        "Gosto de me expressar pelas coisas, as cores, as formas e os sentimentos."
+      </div>
+      
+      <div class="cv-resumo">
+        <strong><i class="far fa-file-alt"></i> Currículo Resumido</strong>
+        <ul>
+          <li><i class="fas fa-graduation-cap"></i> Formação no Centro Livre de Artes - Goiânia (técnicas em pintura acrílica)</li>
+          <li><i class="fas fa-search"></i> 8 anos de pesquisa autodidata e aprimoramento em pintura seca e mista</li>
+          <li><i class="fas fa-layer-group"></i> Séries autorais: "Os Olhares que Criaram o Meu Olhar", "Brasileiros: Os Palhaços", "Ausências", "A Casa dos Bichos", "Términos"</li>
+          <li><i class="fas fa-map-marker-alt"></i> Exposições e mostras em Goiânia e circuito independente</li>
+          <li><i class="far fa-calendar-alt"></i> Produção contínua desde 2016 · Obras em acervos particulares</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all"><i class="fas fa-th-large"></i> Todas obras</button>
+    <button class="filter-btn" data-filter="olhares"><i class="fas fa-eye"></i> Os Olhares</button>
+    <button class="filter-btn" data-filter="palhacos"><i class="fas fa-mask"></i> Brasileiros (Palhaços)</button>
+    <button class="filter-btn" data-filter="ausencias"><i class="fas fa-cloud-moon"></i> Ausências</button>
+    <button class="filter-btn" data-filter="casa_bichos"><i class="fas fa-paw"></i> A Casa dos Bichos</button>
+    <button class="filter-btn" data-filter="terminos"><i class="fas fa-dove"></i> Términos</button>
+  </div>
+
+  <div class="gallery-header">
+    <h2><i class="fas fa-images"></i> Acervo Completo</h2>
+    <div class="works-count" id="worksCount"><span>24</span> obras</div>
+  </div>
+  
+  <div id="portfolioGrid" class="portfolio-grid"></div>
+
+  <div class="footer">
+    <div class="footer-links">
+      <a href="mailto:iquearte@gmail.com"><i class="far fa-envelope"></i> iquearte@gmail.com</a>
+      <a href="https://wa.me/5562984215272" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> (62) 98421-5272</a>
+      <a href="https://www.instagram.com/claudioique/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> @claudioique</a>
+    </div>
+    <span><i class="far fa-copyright"></i> Ique · Todos os direitos reservados</span>
+  </div>
+</div>
+
+<script>
+  // DADOS DAS OBRAS
+  const obras = [
+    { titulo: "Leda", ano: 2022, tecnica: "Tinta acrílica e xadrez sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "olhares", artista: "Ique" },
+    { titulo: "Rosa", ano: 2022, tecnica: "Tinta acrílica e xadrez sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "olhares", artista: "Ique" },
+    { titulo: "Patinha “Little Duck”", ano: 2022, tecnica: "Tinta acrílica e xadrez sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "olhares", artista: "Ique" },
+    { titulo: "Ique (Autorretrato)", ano: 2022, tecnica: "Tinta acrílica e xadrez sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "olhares", artista: "Ique" },
+    { titulo: "Claúdia", ano: 2022, tecnica: "Tinta acrílica e xadrez sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "olhares", artista: "Ique" },
+    
+    { titulo: "Palhaço, o palhaço", ano: 2023, tecnica: "Tinta acrílica sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "palhacos", artista: "Ique" },
+    { titulo: "Costureira, a palhaça", ano: 2023, tecnica: "Tinta acrílica sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "palhacos", artista: "Ique" },
+    { titulo: "Gari, o palhaço", ano: 2023, tecnica: "Tinta acrílica sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "palhacos", artista: "Ique" },
+    { titulo: "Desempregado, o palhaço", ano: 2023, tecnica: "Tinta acrílica sobre papel fabriano preto", dimensoes: "100 x 70 cm", serie: "palhacos", artista: "Ique" },
+    
+    { titulo: "Ascensão", ano: 2023, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "ausencias", artista: "Ique" },
+    { titulo: "Discórdia", ano: 2023, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "ausencias", artista: "Ique" },
+    { titulo: "Partida", ano: 2023, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "ausencias", artista: "Ique" },
+    { titulo: "Solidão", ano: 2023, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "ausencias", artista: "Ique" },
+    { titulo: "Finitude", ano: 2023, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "ausencias", artista: "Ique" },
+    
+    { titulo: "Os patos", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "casa_bichos", artista: "Ique" },
+    { titulo: "O gato e o passarinho", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "casa_bichos", artista: "Ique" },
+    { titulo: "A aranha", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "casa_bichos", artista: "Ique" },
+    { titulo: "O cão e a libélula", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "casa_bichos", artista: "Ique" },
+    { titulo: "O bode", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "casa_bichos", artista: "Ique" },
+    
+    { titulo: "As rosas", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "terminos", artista: "Ique" },
+    { titulo: "Luar", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "terminos", artista: "Ique" },
+    { titulo: "Príncipe Nu", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "terminos", artista: "Ique" },
+    { titulo: "Luto", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "terminos", artista: "Ique" },
+    { titulo: "Anjo Solidão", ano: 2024, tecnica: "Tinta acrílica sobre tela", dimensoes: "100 x 80 cm", serie: "terminos", artista: "Ique" }
+  ];
+  
+  function getImagemUrl(obra) {
+    const mapaImagens = {
+      "Leda": "imagens/obras/leda.jpg",
+      "Rosa": "imagens/obras/rosa.jpg",
+      "Patinha “Little Duck”": "imagens/obras/patinha_little_duck.jpg",
+      "Ique (Autorretrato)": "imagens/obras/autorretrato.jpg",
+      "Claúdia": "imagens/obras/claudia.jpg",
+      "Palhaço, o palhaço": "imagens/obras/palhaco_o_palhaco.jpg",
+      "Costureira, a palhaça": "imagens/obras/costureira_a_palhaca.jpg",
+      "Gari, o palhaço": "imagens/obras/gari_o_palhaco.jpg",
+      "Desempregado, o palhaço": "imagens/obras/desempregado_o_palhaco.jpg",
+      "Ascensão": "imagens/obras/ascensao.jpg",
+      "Discórdia": "imagens/obras/discordia.jpg",
+      "Partida": "imagens/obras/partida.jpg",
+      "Solidão": "imagens/obras/solidao.jpg",
+      "Finitude": "imagens/obras/finitude.jpg",
+      "Os patos": "imagens/obras/os_patos.jpg",
+      "O gato e o passarinho": "imagens/obras/o_gato_e_o_passarinho.jpg",
+      "A aranha": "imagens/obras/a_aranha.jpg",
+      "O cão e a libélula": "imagens/obras/o_cao_e_a_libelula.jpg",
+      "O bode": "imagens/obras/o_bode.jpg",
+      "As rosas": "imagens/obras/as_rosas.jpg",
+      "Luar": "imagens/obras/luar.jpg",
+      "Príncipe Nu": "imagens/obras/principe_nu.jpg",
+      "Luto": "imagens/obras/luto.jpg",
+      "Anjo Solidão": "imagens/obras/anjo_solidao.jpg"
+    };
+    
+    const caminho = mapaImagens[obra.titulo];
+    if (caminho) return caminho;
+    return `https://via.placeholder.com/600x750/121113/d4af37?text=${encodeURIComponent(obra.titulo)}`;
+  }
+  
+  const gridContainer = document.getElementById('portfolioGrid');
+  let currentFilter = 'all';
+  
+  function renderizarObras() {
+    if (!gridContainer) return;
+    const filtered = currentFilter === 'all' 
+      ? obras 
+      : obras.filter(obra => obra.serie === currentFilter);
+    
+    const countSpan = document.querySelector('#worksCount span');
+    if (countSpan) countSpan.innerText = filtered.length;
+    
+    gridContainer.innerHTML = '';
+    if (filtered.length === 0) {
+      gridContainer.innerHTML = `<div style="text-align:center; grid-column:1/-1; padding:3rem; color:#a39e93;">Nenhuma obra nesta série.</div>`;
+      return;
+    }
+    
+    filtered.forEach((obra, idx) => {
+      const card = document.createElement('div');
+      card.className = 'art-card';
+      card.style.animationDelay = `${idx * 0.03}s`;
+      const imgUrl = getImagemUrl(obra);
+      
+      card.innerHTML = `
+        <div class="img-wrapper">
+          <img src="${imgUrl}" alt="${obra.titulo} - ${obra.artista}" loading="lazy">
+        </div>
+        <div class="card-info">
+          <div class="artist-badge">${escapeHtml(obra.artista)}</div>
+          <div class="artwork-title">${escapeHtml(obra.titulo)}</div>
+          <div class="details">
+            <span class="detail-chip">${obra.ano}</span>
+            <span class="detail-chip">${escapeHtml(obra.tecnica)}</span>
+          </div>
+          <div class="dimensions">
+            <i class="fas fa-expand-alt"></i> ${obra.dimensoes}
+          </div>
+        </div>
+      `;
+      gridContainer.appendChild(card);
+    });
+  }
+  
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+  
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.getAttribute('data-filter');
+      renderizarObras();
+      document.querySelector('.gallery-header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  
+  renderizarObras();
+</script>
+</body>
+</html>
